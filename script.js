@@ -417,26 +417,3 @@ function initCustomCursor() {
 document.addEventListener("DOMContentLoaded", () => {
     initCustomCursor();
 });
-
-
-const scriptURL = "https://script.google.com/macros/s/AKfycbykSO2ajTfOBFxrzYNX2xqLlwHwLKYFWZFvk_7i-defywgfrbjxdyUEpUaIduWbDu_x/exec"; // Replace with your actual script URL
-
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    fetch(scriptURL, {
-        method: "POST",
-        mode: "no-cors", // bypass CORS issue
-        body: formData
-    })
-        .then(() => {
-            document.getElementById("response-msg").textContent = "Message sent successfully!";
-            form.reset();
-        })
-        .catch(() => {
-            document.getElementById("response-msg").textContent = "Something went wrong. Try again.";
-        });
-});
